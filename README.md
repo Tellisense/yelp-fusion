@@ -2,34 +2,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How to Run Application
 
-```In the project directory:
-
-  $ npm i
-
-
-Go to the server folder
-
-  $ cd src/server
-
-
-Install server dependencies
-
-  $ npm i
-
-
-Go back to the root directory
-
-  $ cd ..
-
-  $ cd ..
-
-
-To start both the server and run the application:
-
-  $ npm run dev
 ```
+create a file in the root of the application and name it .env
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3020](http://localhost:3020) to view it in the browser.<br />
+Goto: https://www.yelp.com/fusion  click on "get started"  then login.
 
-server is running on [http://localhost:9020](http://localhost:9020)
+On the left menu under "General" --> "Manage App", create an app profile and save to get an API key, copy the API key.
+
+In the project directory:
+
+create a file in the root of the project file and call it .env and paste the below in the .env file, pasting the API key you just copied from Yelp Fusion after equal sign.  Note: there are no quotes, just paste right after the equal sign.
+
+REACT_APP_YELP_API_KEY=paste Yelp Fusion API key goes here
+
+save the file and close and run the below commands in the terminal:
+
+  $ npm i
+
+
+  $ npm start
+```
