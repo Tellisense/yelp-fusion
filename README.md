@@ -1,11 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app),
+using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ![Screen shot of App](/src/assets/screenShot.png?raw=true "yelp Ice Cream Challenge")
 
 ## How to Run Application
 
 ```
-create a file in the root of the application and name it .env
 
 Goto: https://www.yelp.com/fusion  click on "get started"  then login.
 
