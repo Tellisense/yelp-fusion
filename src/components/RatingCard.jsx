@@ -11,6 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: 460,
     display: 'flex',
     flexDirection: 'column',
     '& > * + *': {
@@ -23,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RatingCard = ({ companyImg, companyName, companyAddress, companyCity, companyState, companyRating, userName, userImg, companyComment }) => {
+const RatingCard = (props) => {
+  const { companyImg, companyName, companyAddress, companyCity, companyState, companyRating, userName, userImg, companyComment } = props
   const classes = useStyles()
 
 

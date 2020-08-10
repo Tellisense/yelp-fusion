@@ -55,6 +55,7 @@ export const {
   requestCompleted,
 } = yelpSlice.actions;
 
+//heroku CORS bypass is used temporarily, API call should be moved to server side to fix
 const url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/";
 
 export const loadYelp = () => (dispatch, getState) => {

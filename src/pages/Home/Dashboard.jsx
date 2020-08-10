@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { loadYelp, selectYelp, selectLoading } from '../../features/yelpSlice'
+import { loadYelp, selectYelp, selectLoading, selectError } from '../../features/yelpSlice'
 import { Grid, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -8,7 +8,8 @@ import Logo from '../../components/Logo'
 import RatingCard from '../../components/RatingCard'
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import Snackbar from '@material-ui/core/Snackbar';
+import { Alert } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,13 +29,33 @@ const Dashboard = (props) => {
   const dispatch = useDispatch()
   const yelpResults = useSelector(selectYelp)
   const loader = useSelector(selectLoading)
+  const error = useSelector(selectError)
   const [data, setData] = useState([])
   const [open, setOpen] = useState(false);
-  console.log(`open: `, open)
-  console.log(`data: `, data)
+  const [openError, setOpenError] = useState(false);
+
+  //logs for testing application
+  console.log(`loader: `, open)
+  console.log(`Api Data: `, data)
+  if (error) console.log(`Error: `, error)
+
   const handleClose = () => {
     setOpen(false);
   };
+
+  //error handling
+  useEffect(() => {
+    if (error) setOpenError(true)
+    else setOpenError(false)
+  }, [error])
+
+  const handleErrorClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenError(false);
+  };
+
 
   useEffect(() => {
     setOpen(loader)
@@ -44,8 +65,10 @@ const Dashboard = (props) => {
     setData(yelpResults)
   }, [yelpResults])
 
+
   useEffect(() => {
     dispatch(loadYelp())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [yelpResults])
 
   const handleClick = () => {
@@ -79,6 +102,11 @@ const Dashboard = (props) => {
         })
         }
       </Grid>
+      <Snackbar open={openError} autoHideDuration={3000} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} onClose={handleErrorClose}>
+        <Alert onClose={handleClose} severity="error">
+          {error}
+        </Alert>
+      </Snackbar>
       <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
         <CircularProgress color="inherit" />
       </Backdrop>
