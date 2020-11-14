@@ -2,6 +2,7 @@
   "name": "yelp-challenge",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "contributor": "Justin Rahimi",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
